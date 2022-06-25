@@ -85,9 +85,29 @@ class GerFuncionarios:
         # Pesquisar id
         self.id_en = Entry(self.f3, width=15, relief=FLAT, textvariable=self.id, font=15)
         self.id_en.place(x=200, y=315)
-        self.id_btn = Button(self.f3, text="Pesquisar ID", width=12, font=("bold", 15), relief=FLAT, bg=self.cor2,
+        self.id_btn = Button(self.f3, text="Pesquisar ID", font=("bold", 15), relief=FLAT, bg=self.cor2,
                              fg=self.cor4, command=self.pesquisar)
-        self.id_btn.place(x=200, y=350)
+        self.id_btn.place(x=200, y=350, relwidth=0.4)
+
+        # Treeview
+        self.tv = ttk.Treeview(self.f4, height=6, columns=("col1", "col2", "col3", "col4", "col5"))
+        self.tv.heading("#0", text="ID")
+        self.tv.heading("#1", text="Nome")
+        self.tv.heading("#2", text="Senha")
+        self.tv.heading("#3", text="CPF")
+        self.tv.heading("#4", text="Cargo")
+
+        self.tv.column("#0", width=30)
+        self.tv.column("#1", width=230)
+        self.tv.column("#2", width=180)
+        self.tv.column("#3", width=150)
+        self.tv.column("#4", width=180)
+
+        self.tv.place(x=0, y=0, width=800, height=540)
+
+        self.scroll = Scrollbar(self.f4, orient="vertical")
+        self.tv.configure(yscrollcommand=self.scroll.set)
+        self.scroll.place(x=780, y=0)
 
         mainloop()
 
