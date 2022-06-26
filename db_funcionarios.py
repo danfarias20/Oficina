@@ -27,3 +27,8 @@ class Funcionarios:
     def del_func(self, iden):
         self.cursor.execute("REMOVE * FROM funcionarios WHERE iden=?", (iden, ))
         self.con.commit()
+
+    def fetch(self):
+        self.cursor.execute("SELECT * FROM funcionarios")
+        linhas = self.cursor.fetchall()
+        return linhas
